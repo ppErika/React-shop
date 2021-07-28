@@ -5,6 +5,8 @@ import { Navbar, Container, Nav, Button } from 'react-bootstrap';
 import './App.css';
 import ShoesData from './data.js';
 
+import { Link, Route, Switch } from 'react-router-dom';
+
 function App() {
   let [shoes, shoes변경] = useState(ShoesData);
 
@@ -29,11 +31,19 @@ function App() {
         </div>
       </div>
 
+      <Route exact path="/">
+        <div>메인 페이지에요.</div>
+      </Route>
+      <Route path="/detail">
+        <div>상세 페이지에요.</div>
+      </Route>
+      {/* <Router path="/어쩌구" component={ Modal }></Router> */}
+
       <div className="container">
         <div className="row">
           {
             shoes.map((a, i) => {
-              return <Card shoes={shoes[i]} i={i} key={i}/>
+              return <Card shoes={shoes[i]} i={i} key={i} />
             })
           }
         </div>
@@ -47,7 +57,7 @@ function App() {
 function Card(props) {
   return (
     <div className="col-md-4">
-      <img src={'https://codingapple1.github.io/shop/shoes'+ (props.i+1) +'.jpg'} width="100%" />
+      <img src={'https://codingapple1.github.io/shop/shoes' + (props.i + 1) + '.jpg'} width="100%" />
       <h4>{props.shoes.title}</h4>
       <p>{props.shoes.content} & {props.shoes.price}</p>
     </div>
