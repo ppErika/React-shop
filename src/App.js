@@ -16,8 +16,8 @@ function App() {
         <Container>
           <Navbar.Brand href="/">shopSHOP</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link> <Link to="/">Home</Link> </Nav.Link>
-            <Nav.Link> <Link to="/detail">Detail</Link> </Nav.Link>
+            <Nav.Link href="/">Home </Nav.Link>
+            <Nav.Link href="/detail">Detail</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
@@ -32,6 +32,7 @@ function App() {
             </div>
           </div>
           <div className="container">
+            <Button variant="warning" onClick="">가격순 정렬</Button>
             <div className="row">
               {
                 shoes.map((a, i) => {
@@ -42,14 +43,14 @@ function App() {
           </div>
         </Route>
 
-        <Route path="/detail">
-          <Detail />
+        <Route path="/detail/:id">
+          <Detail shoes={shoes} />
         </Route>
 
         <Route path="/:id">
           <div>아무거나 적었을 때 이걸 보여줘</div>
         </Route>
-        
+
       </Switch>
 
     </div>
