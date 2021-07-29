@@ -16,8 +16,8 @@ function App() {
         <Container>
           <Navbar.Brand href="/">shopSHOP</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="/">Home </Nav.Link>
-            <Nav.Link href="/detail">Detail</Nav.Link>
+            <Nav.Link as={Link} to="/">Home </Nav.Link>
+            <Nav.Link as={Link} to="/detail">Detail</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
