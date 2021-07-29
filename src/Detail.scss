@@ -1,0 +1,46 @@
+$메인칼라: #ff0000;
+
+.red {
+    color: $메인칼라;
+}
+
+@mixin 함수() {
+    background: #eeeeee;
+    padding: 15px;
+    border-radius: 5px;
+    max-width: 500px;
+    width: 100%;
+    margin: auto;
+}
+
+.my-alert {
+    @include 함수()
+}
+
+.my-alert-yellow {
+    @extend .my-alert;
+    background: lightyellow;
+}
+
+
+
+.my-alert p {
+    margin-bottom: 0;
+}
+
+// div.container h4 {
+//     color: blue;
+// }
+
+// div.container p {
+//     color: green;
+// }
+// 위랑 아래랑 같은 코드인데 아래가 한번에 줄일 수 있어서 좋다
+// div.container {
+//     h4{
+//         color:blue;
+//     }
+//     p{
+//         color:green; 
+//     }
+// }

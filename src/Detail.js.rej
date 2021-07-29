@@ -1,0 +1,9 @@
+diff a/src/Detail.js b/src/Detail.js	(rejected hunks)
+@@ -13,6 +13,7 @@
+ let 제목 = styled.h4`
+     font-size: 25px;
+     color: ${ props => props.색상 }
++`;
+ 
+ function Detail(props) {
+ 
