@@ -43,12 +43,21 @@ function App() {
 
             <button className="btn btn-primary" onClick={ ()=>{
 
+              // 로딩중이라는 UI 띄움
+
               axios.get('https://codingapple1.github.io/shop/data2.json')
               // Ajax요청 성공 시
-              .then(()=>{ console.log('성공했어요') })
+              .then((result)=>{ 
+                // 로딩중이라는 UI 안보이게 처리
+                console.log(result)
+                shoes변경( [...shoes, ...result.data] );
+               })
 
               // Ajax요청 실패 시
-              .catch(()=>{ console.log('실패했어요') })
+              .catch(()=>{ 
+                // 로딩중이라는 UI 안보이게 처리
+                console.log('실패했어요')
+               })
 
             } }>더보기</button>
           </div>
