@@ -8,21 +8,18 @@ let 박스 = styled.div`
 `;
 let 제목 = styled.h4`
     font-size: 25px;
-    color: ${ props => props.색상 };
+    color: ${props => props.색상};
 `;
 
 function Detail(props) {
 
     useEffect(() => {
         // 생성되자마자 실행할 코드 (2초 후에 alert 창을 안보이게 하자)
-        let 타이머 = setTimeout(() => {alert변경(false) }, 2000);
-
-        // 사라질 때 실행할 코드
-        // return function 어쩌구(){ 실행할 코드~~~ }
+        let 타이머 = setTimeout(() => { alert변경(false) }, 2000);
     });
 
     let [alert, alert변경] = useState(true);
-    let [inputData, inputData변경]=useState('');
+    let [inputData, inputData변경] = useState('');
 
     let { id } = useParams();
     let 찾은상품 = props.shoes.find(function (상품) {
@@ -36,7 +33,7 @@ function Detail(props) {
                 <제목 className="red">Detail</제목>
             </박스>
 
-            <input onChange={(e)=>{ inputData변경(e.target.value) }} />
+            <input onChange={(e) => { inputData변경(e.target.value) }} />
 
             {
                 alert === true
