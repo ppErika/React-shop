@@ -5,6 +5,7 @@ import { Navbar, Container, Nav, Button } from 'react-bootstrap';
 import './App.css';
 import ShoesData from './data.js';
 import Detail from './Detail.js';
+import axios from 'axios';
 import { Link, Route, Switch } from 'react-router-dom';
 
 function App() {
@@ -32,7 +33,6 @@ function App() {
             </div>
           </div>
           <div className="container">
-            <Button variant="warning" onClick="">가격순 정렬</Button>
             <div className="row">
               {
                 shoes.map((a, i) => {
@@ -40,6 +40,17 @@ function App() {
                 })
               }
             </div>
+
+            <button className="btn btn-primary" onClick={ ()=>{
+
+              axios.get('https://codingapple1.github.io/shop/data2.json')
+              // Ajax요청 성공 시
+              .then(()=>{ console.log('성공했어요') })
+
+              // Ajax요청 실패 시
+              .catch(()=>{ console.log('실패했어요') })
+
+            } }>더보기</button>
           </div>
         </Route>
 
