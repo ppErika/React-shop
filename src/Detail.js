@@ -3,17 +3,16 @@ import { useHistory, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import './Detail.scss'
 
-let 박스 = styled.div`
+let box = styled.div`
     padding: 20px;
 `;
-let 제목 = styled.h4`
+let title = styled.h4`
     font-size: 25px;
     color: ${props => props.색상};
 `;
 
 function Detail(props) {
     let [alert, alert변경] = useState(true);
-    let [inputData, inputData변경] = useState('');
 
     useEffect(() => {
         // 생성되자마자 실행할 코드 (2초 후에 alert 창을 안보이게 하자)
@@ -30,9 +29,9 @@ function Detail(props) {
 
     return (
         <div className="container">
-            <박스>
-                <제목 className="red">Detail</제목>
-            </박스>
+            <box>
+                <title className="red">Detail</title>
+            </box>
 
             {
                 alert === true

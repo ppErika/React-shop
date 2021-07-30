@@ -1,18 +1,19 @@
 /* eslint-disable */
 
 import React, { useState } from 'react';
-import { Navbar, Container, Nav, Button } from 'react-bootstrap';
+import { Navbar, Container, Nav } from 'react-bootstrap';
 import './App.css';
 import ShoesData from './data.js';
 import Detail from './Detail.js';
 import axios from 'axios';
-import { Link, Route, Switch } from 'react-router-dom';
+import { Link, Route, Switch, useHistory } from 'react-router-dom';
 
 function App() {
   let [shoes, shoes변경] = useState(ShoesData);
   let [더보기버튼, 더보기버튼변경] = useState(true);
   let [count, count변경] = useState(0);
   let [재고, 재고변경] = useState([10,11,12]);
+  let history = useHistory();
 
   return (
     <div className="App">
@@ -21,7 +22,6 @@ function App() {
           <Navbar.Brand href="/">shopSHOP</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link as={Link} to="/">Home </Nav.Link>
-            <Nav.Link as={Link} to="/detail">Detail</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
@@ -32,7 +32,6 @@ function App() {
             <div>
               <h1>BIG SALE!!</h1>
               <p>어쩌구 저쩌구 이런 저런 문구들</p>
-              <Button variant="primary">more</Button>
             </div>
           </div>
           <div className="container">
@@ -40,7 +39,7 @@ function App() {
               {
                 shoes.map((a, i) => {
                   return (
-                    <Card shoes={shoes[i]} i={i} key={i} />
+                    <Card shoes={shoes[i]} history={history} i={i} key={i} />
                   )
                 })
               }
@@ -109,7 +108,7 @@ function App() {
 function Card(props) {
   return (
     <div className="col-md-4">
-      <img src={'https://codingapple1.github.io/shop/shoes' + (props.i + 1) + '.jpg'} width="100%" />
+      <img src={'https://codingapple1.github.io/shop/shoes' + (props.i + 1) + '.jpg'} width="100%" onClick={ ()=>{ props.history.push("/detail/"+props.i)} }/>
       <h4>{props.shoes.title}</h4>
       <p>{props.shoes.content} & {props.shoes.price}</p>
     </div>
