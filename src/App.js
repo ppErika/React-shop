@@ -55,16 +55,30 @@ function App() {
                     axios.get("https://codingapple1.github.io/shop/data" + (count + 2) + ".json")
                       // Ajax요청 성공 시
                       .then((result) => {
+
                         // 로딩중이라는 UI 안보이게 처리
+
+                        // 다음이 있는 지 테스트
+                        axios.get("https://codingapple1.github.io/shop/data" + (count + 3) + ".json")
+                        .then((result) => {
+                          console.log(result)
+                        })
+                        .catch(() => {
+                          console.log('이후 페이지가 없습니다')
+                          더보기버튼변경(false)
+                        })
+
                         console.log(result)
                         shoes변경([...shoes, ...result.data])
-
                         count변경(count + 1)
+
                       })
 
                       // Ajax요청 실패 시
                       .catch(() => {
+
                         // 로딩중이라는 UI 안보이게 처리
+
                         console.log('실패했어요')
                         더보기버튼변경(false)
                       })
