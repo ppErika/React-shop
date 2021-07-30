@@ -10,6 +10,8 @@ import { Link, Route, Switch } from 'react-router-dom';
 
 function App() {
   let [shoes, shoes변경] = useState(ShoesData);
+  let [더보기버튼, 더보기버튼변경] = useState(true);
+  let [count, count변경] = useState(0);
 
   return (
     <div className="App">
@@ -36,30 +38,42 @@ function App() {
             <div className="row">
               {
                 shoes.map((a, i) => {
-                  return <Card shoes={shoes[i]} i={i} key={i} />
+                  return (
+                    <Card shoes={shoes[i]} i={i} key={i} />
+                  )
                 })
               }
             </div>
 
-            <button className="btn btn-primary" onClick={ ()=>{
+            {
+              더보기버튼 === true
+                ? (
+                  <button className="btn btn-primary" onClick={() => {
 
-              // 로딩중이라는 UI 띄움
+                    // 로딩중이라는 UI 띄움
 
-              axios.get('https://codingapple1.github.io/shop/data2.json')
-              // Ajax요청 성공 시
-              .then((result)=>{ 
-                // 로딩중이라는 UI 안보이게 처리
-                console.log(result)
-                shoes변경( [...shoes, ...result.data] );
-               })
+                    axios.get("https://codingapple1.github.io/shop/data" + (count + 2) + ".json")
+                      // Ajax요청 성공 시
+                      .then((result) => {
+                        // 로딩중이라는 UI 안보이게 처리
+                        console.log(result)
+                        shoes변경([...shoes, ...result.data])
 
-              // Ajax요청 실패 시
-              .catch(()=>{ 
-                // 로딩중이라는 UI 안보이게 처리
-                console.log('실패했어요')
-               })
+                        count변경(count + 1)
+                      })
 
-            } }>더보기</button>
+                      // Ajax요청 실패 시
+                      .catch(() => {
+                        // 로딩중이라는 UI 안보이게 처리
+                        console.log('실패했어요')
+                        더보기버튼변경(false)
+                      })
+
+                  }}>더보기</button>
+                )
+                : null
+            }
+
           </div>
         </Route>
 
